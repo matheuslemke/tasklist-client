@@ -33,8 +33,20 @@ export class TaskService {
   }
 
   deleteTaskById(TaskId: number): Observable<number> {
-    const httpOptions = { headers: new HttpHeaders({ 'Content-Type': 'application/json' }) };
+    const httpOptions = {};
     return this.http.delete<number>(this.url + '/' + TaskId, httpOptions);
+  }
+
+  finishTask(Task: Task): Observable<Task> {
+    let url = '/' + Task.idTask + '/end';
+    console.log(Task);
+    const httpOptions = { headers: new HttpHeaders({ 'Content-Type': 'application/json' }) };
+    return this.http.put<Task>(this.url + url, Task, httpOptions);
+  }
+
+  restartTask(Task: Task): Observable<Task> {
+    const httpOptions = { headers: new HttpHeaders({ 'Content-Type': 'application/json' }) };
+    return this.http.put<Task>(this.url + '/' + Task.idTask + '/restart', Task, httpOptions);
   }
 
 }
