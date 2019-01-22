@@ -1,0 +1,75 @@
+<div class="container">
+
+  <mat-card>
+    <mat-toolbar color="accent">
+      <div align="center" style="color:white;text-align: right;">
+        CRUD operation in Angular 7 using Web api and Sql Database
+      </div>
+    </mat-toolbar>
+    <br><br>
+    <mat-card-content>
+      <form [formGroup]="taskForm" (ngSubmit)="onFormSubmit(taskForm.value)">
+        <table>
+          <tr>
+            <td class="tbl1">
+              <mat-form-field class="demo-full-width">
+                <input formControlName="title" matTooltip="Enter Task Title" matInput placeholder="Title">
+              </mat-form-field>
+              <mat-error>
+                <span *ngIf="!taskForm.get('title').value && taskForm.get('title').touched"></span>
+              </mat-error>
+            </td>
+          </tr>
+          <tr>
+            <td class="tbl1">
+              <mat-form-field class="demo-full-width">
+                <input formControlName="description" matTooltip="Enter description" matInput placeholder="Description">
+              </mat-form-field>
+              <mat-error>
+                <span *ngIf="!taskForm.get('description').value && taskForm.get('description').touched"></span>
+              </mat-error>
+            </td>
+          </tr>
+          <tr>
+            <td></td>
+            <td class="content-center">
+              <button type="submit" mat-raised-button color="accent" matTooltip="Click Submit Button" [disabled]="!taskForm.valid">Submit</button>
+              <button type="reset" mat-raised-button color="accent" matTooltip="Click Reset Button" (click)="resetForm()">Reset</button>
+            </td>
+            <td>
+              <p *ngIf="dataSaved" style="color:rgb(0, 128, 0);font-size:20px;font-weight:bold" Class="success" align="left">
+                {{massage}}
+              </p>
+            </td>
+          </tr>
+        </table>
+        <br><br>
+        <table class="table">
+          <tr ngclass="btn-primary">
+            <th class="tbl2">Task Title</th>
+            <th class="tbl2">Status</th>
+            <th class="tbl2">Creation</th>
+            <th class="tbl2">End</th>
+            <th class="tbl2">Description</th>
+            <th class="tbl2">Edit</th>
+            <th class="tbl2">Delete</th>
+          </tr>
+          <tr *ngFor="let task of allTasks | async">
+            <td class="tbl2">{{task.title}}</td>
+            <td class="tbl2">{{task.status}}</td>
+            <td class="tbl2">{{task.creationDate | date }}</td>
+            <td class="tbl2">{{task.endDate | date }}</td>
+            <td class="tbl2">{{task.description}}</td>
+            <td class="tbl2">
+              <button type="button" class="btn btn-info" matTooltip="Click Edit Button" (click)="loadTaskToEdit(task.EmpId)">Edit</button>
+            </td>
+            <td class="tbl2">
+              <button type="button" class="btn btn-danger" matTooltip="Click Delete Button" (click)="deleteTask(task.EmpId)">Delete</button>
+            </td>
+          </tr>
+
+        </table>
+      </form>
+    </mat-card-content>
+  </mat-card>
+</div>
