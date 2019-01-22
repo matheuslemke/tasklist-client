@@ -61,10 +61,10 @@
             <td class="tbl2">{{task.endDate | date }}</td>
             <td class="tbl2">{{task.description}}</td>
             <td class="tbl2">
-              <button type="button" class="btn btn-info" matTooltip="Click Edit Button" (click)="loadTaskToEdit(task.EmpId)">Edit</button>
+              <button type="button" class="btn btn-info" matTooltip="Click Edit Button" (click)="loadTaskToEdit(task.idTask)">Edit</button>
             </td>
             <td class="tbl2">
-              <button type="button" class="btn btn-danger" matTooltip="Click Delete Button" (click)="deleteTask(task.EmpId)">Delete</button>
+              <button type="button" class="btn btn-danger" matTooltip="Click Delete Button" (click)="deleteTask(task.idTask)">Delete</button>
             </td>
           </tr>
 
