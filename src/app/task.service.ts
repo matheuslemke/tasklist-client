@@ -29,7 +29,7 @@ export class TaskService {
 
   updateTask(Task: Task): Observable<Task> {
     const httpOptions = { headers: new HttpHeaders({ 'Content-Type': 'application/json' }) };
-    return this.http.put<Task>(this.url + '/', Task, httpOptions);
+    return this.http.put<Task>(this.url + '/' + Task.idTask, Task, httpOptions);
   }
 
   deleteTaskById(TaskId: number): Observable<number> {
