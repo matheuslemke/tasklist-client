@@ -1,5 +1,5 @@
 {
-  "name": "crud-angular7-web-api",
+  "name": "tasklist-client",
   "version": "0.0.0",
   "scripts": {
     "ng": "ng",
