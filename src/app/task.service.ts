@@ -39,7 +39,6 @@ export class TaskService {
 
   finishTask(Task: Task): Observable<Task> {
     let url = '/' + Task.idTask + '/end';
-    console.log(Task);
     const httpOptions = { headers: new HttpHeaders({ 'Content-Type': 'application/json' }) };
     return this.http.put<Task>(this.url + url, Task, httpOptions);
   }

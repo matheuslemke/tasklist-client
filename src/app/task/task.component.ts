@@ -29,7 +29,6 @@ export class TaskComponent implements OnInit {
     this.allTasks = this.taskService.getAllTask();
   }
   onFormSubmit() {
-    console.log('oi');
     this.dataSaved = false;
     const task = this.taskForm.value;
     this.CreateTask(task);
